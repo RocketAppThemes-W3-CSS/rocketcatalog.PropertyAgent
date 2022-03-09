@@ -4,17 +4,40 @@
 
     <h1>{{article this "name"}}</h1>
 
-    <div class="w3-row w3-padding w3-margin-top w3-margin-bottom">{{article this "summary"}}</div>
+    <div class="w3-row">
+        <div class="w3-half">
+            <div class="w3-display-row">
 
-    <div class="w3-row w3-padding">
-        <h3>Contact / Accès</h3>
-        <div class="w3-row">
-            <div class="w3-col m3">
-                <img class="imgrollovertarget" alt="{{article this "name"}}" src="{{article this "imageurl" 0 180 180}}" style="width:180px;">
+                {{#each genxml.data.genxml.imagelist.genxml}}
+                {{#if @first}}
+                    <img class="a-largeimagepos sliderind" alt="{{article @root "name"}}" src="{{article @root "imageurl" @index 640 400}}" style="width:100%;">
+                {{else}}
+                    <img class="sliderind" src="{{article @root "imageurl" @index 640 400}}" style="width:100%;display:none;">
+                {{/if}}
+                {{/each}}
+
             </div>
+
+            <div class="w3-row" style="margin: 8px -8px;">
+
+                {{#each genxml.data.genxml.imagelist.genxml}}
+                <div class="w3-col s6 m4 l2 w3-padding-small" style="margin-bottom: 8px">
+                    <img class="demo w3-opacity w3-hover-opacity-off" src="{{article @root "imageurl" @index 300 200}}" style="width:100%;cursor:pointer" onclick="currentDiv({{@index}})">
+                </div>
+                {{/each}}
+
+            </div>
+
+
+        </div>
+        <div class="w3-half">
+            <div class="w3-row w3-padding "><b>170.000€</b></div>
+            <div class="w3-row w3-padding w3-margin-bottom"><b>{{{article this "summary"}}}</b></div>
+            <div class="w3-row w3-padding">{{{article @root "genxml/textbox/articlesummary2" "breakof"}}}</div>
         </div>
     </div>
 
+   
     <div class="w3-row">
         <div class="w3-half w3-padding">
             <h3>{{resourcekey this "Theme.links"}}</h3>
@@ -87,6 +110,26 @@
 
     }
 
+
+        function currentDiv(n) {
+            showDivs(slideIndex = (n + 1));
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("sliderind");
+            var dots = document.getElementsByClassName("demo");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-opacity-off";
+        }
 
     </script>
 
