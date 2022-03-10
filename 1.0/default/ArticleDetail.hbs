@@ -10,9 +10,9 @@
 
                 {{#each genxml.data.genxml.imagelist.genxml}}
                 {{#if @first}}
-                    <img class="a-largeimagepos sliderind" alt="{{article @root "name"}}" src="{{article @root "imageurl" @index 640 400}}" style="width:100%;">
+                <img class="a-largeimagepos sliderind" alt="{{article @root "name"}}" src="{{image @root "thumburl" @index 640 400}}" style="width:100%;">
                 {{else}}
-                    <img class="sliderind" src="{{article @root "imageurl" @index 640 400}}" style="width:100%;display:none;">
+                <img class="sliderind" src="{{image @root "thumburl" @index 640 400}}" style="width:100%;display:none;">
                 {{/if}}
                 {{/each}}
 
@@ -22,7 +22,7 @@
 
                 {{#each genxml.data.genxml.imagelist.genxml}}
                 <div class="w3-col s6 m4 l2 w3-padding-small" style="margin-bottom: 8px">
-                    <img class="demo w3-opacity w3-hover-opacity-off" src="{{article @root "imageurl" @index 300 200}}" style="width:100%;cursor:pointer" onclick="currentDiv({{@index}})">
+                    <img class="demo w3-opacity w3-hover-opacity-off" src="{{image @root "thumburl" @index 640 400}}" style="width:100%;cursor:pointer" onclick="currentDiv({{@index}})">
                 </div>
                 {{/each}}
 
@@ -31,45 +31,38 @@
 
         </div>
         <div class="w3-half">
-            <div class="w3-row w3-padding "><b>170.000€</b></div>
+            <div class="w3-row w3-padding w3-xxlarge w3-right "><b>{{article @root "genxml/textbox/price" "money" "fr-FR"}}</b></div>
             <div class="w3-row w3-padding w3-margin-bottom"><b>{{{article this "summary"}}}</b></div>
-            <div class="w3-row w3-padding">{{{article @root "genxml/textbox/articlesummary2" "breakof"}}}</div>
+
+            {{#articletest @root "haslinks"}}
+            <div class="w3-row w3-padding">
+                <h3>{{resourcekey this "Theme.links"}}</h3>
+                <div id="linklistcontainer w3-padding">
+                    {{#each genxml.data.genxml.linklist.genxml}}
+                    <div class="w3-row">
+                        <a target="_blank" href="{{link @root "url" @index}}" class="w3-bar-item w3-button">{{link @root "name" @index}}</a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            {{/articletest}}
+            {{#articletest @root "hasdocs"}}
+            <div class="w3-row w3-padding">
+                <h3>{{resourcekey this "Theme.documents"}}</h3>
+                <div id="linklistcontainer w3-padding">
+                    {{#each genxml.data.genxml.lang.genxml.documentlist.genxml}}
+                    <div class="w3-row">
+                        <a target="_blank" href="{{document @root "url" @index}}" class="w3-bar-item w3-button">{{document @root "name" @index}}</a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            {{/articletest}}
+
         </div>
     </div>
 
-   
-    <div class="w3-row">
-        <div class="w3-half w3-padding">
-            <h3>{{resourcekey this "Theme.links"}}</h3>
-            <div id="linklistcontainer w3-padding">
-                {{#each genxml.data.genxml.linklist.genxml}}
-                <div class="w3-row">
-                    {{#when checkbox.hidearticlelink "noteq" "true"}}
-                    {{#when checkbox.blankarticlelink "eq" "true"}}
-                    <a target="_blank" href="{{article @root "linkurl" @index}}" class="w3-bar-item w3-button">{{article @root "linkname" @index}}</a>
-                    {{/when}}
-                    {{#when checkbox.blankarticlelink "noteq" "true"}}
-                    <a href="{{article @root "linkurl" @index}}" class="w3-bar-item w3-button">{{article @root "linkname" @index}}</a>
-                    {{/when}}
-                    {{/when}}
-                </div>
-                {{/each}}
-            </div>
-        </div>
-        <div class="w3-half">
-            <h3>{{resourcekey this "Theme.documents"}}</h3>
-            <div id="linklistcontainer w3-padding">
-                {{#each genxml.data.genxml.lang.genxml.documentlist.genxml}}
-                {{#when checkbox.documenthiddenarticledoc "noteq" "true"}}
-                <div class="w3-row">
-                    <a target="_blank" href="{{article @root "docurl" @index}}" class="w3-bar-item w3-button">{{article @root "docname" @index}}</a>
-                </div>
-                {{/when}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-
+    <div class="w3-row w3-padding">{{{article @root "genxml/textbox/articlesummary2" "breakof"}}}</div>
 
     <div class="w3-row">
         <div id="leafletmap" style="height:300px" class="w3-light-grey"></div>
