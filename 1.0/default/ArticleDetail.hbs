@@ -64,10 +64,11 @@
 
     <div class="w3-row w3-padding">{{{article @root "genxml/textbox/articlesummary2" "breakof"}}}</div>
 
+    {{#when genxml.data.genxml.checkbox.hidemap "noteq" "true"}}
     <div class="w3-row">
         <div id="leafletmap" style="height:300px" class="w3-light-grey"></div>
     </div>
-
+    {{/when}}
 </div>
 
     <script>

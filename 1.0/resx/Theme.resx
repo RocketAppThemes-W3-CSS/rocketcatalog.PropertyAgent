@@ -255,4 +255,7 @@
   <data name="tagwords.Text" xml:space="preserve">
     <value>Tag Words</value>
   </data>
+  <data name="hidemap.Text" xml:space="preserve">
+    <value>Hide Map</value>
+  </data>
 </root>

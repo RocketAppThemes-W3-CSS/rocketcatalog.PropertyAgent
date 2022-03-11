@@ -117,6 +117,9 @@
                         </span>
                     </div>
                     <div id="map" class='w3-row sectionname w3-border w3-padding' style="">
+                        <div class='w3-row w3-padding'>
+                            @CheckBox(info,"genxml/checkbox/hidemap", "&nbsp;" + ResourceKey("Theme.hidemap").ToString(), " class='w3-check' ")
+                       </div>
                         <div class='w3-row'>
                             <div class='w3-col m6 w3-padding'>
                                 <label>@ResourceKey("Theme.lat")</label>
