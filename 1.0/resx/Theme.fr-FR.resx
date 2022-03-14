@@ -228,4 +228,7 @@
   <data name="mapmsg.Text" xml:space="preserve">
     <value>PENSEZ A POSITIONNER VOTRE POINT SUR CETTE CARTE POUR APPARAITRE SUR LA CARTE DU SITE (ZOOMER PUIS DOUBLE-CLIQUER POUR PLACER / DEPLACER LA VIGNETTE)</value>
   </data>
+  <data name="price.Text1" xml:space="preserve">
+    <value>Prix</value>
+  </data>
 </root>

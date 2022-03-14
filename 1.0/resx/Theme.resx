@@ -258,4 +258,7 @@
   <data name="hidemap.Text" xml:space="preserve">
     <value>Hide Map</value>
   </data>
+  <data name="price.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
 </root>

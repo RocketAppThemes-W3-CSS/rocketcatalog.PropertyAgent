@@ -70,7 +70,8 @@
                                 @CheckBox(info, articleData.HiddenByCultureXPath, "&nbsp;" + ResourceKey("RC.hidden") + "&nbsp;" + EditFlag(sessionParams), " class='w3-check' ")
                             </div>
                             <div class="w3-third w3-padding">
-                                @TextBoxMoney(info.Lang, info, "genxml/textbox/price", "class='w3-input w3-border'", "0")
+                                <label>@ResourceKey("Theme.price")</label>
+                                @TextBox(info, "genxml/textbox/price", "class='w3-input w3-border'", "0")
                             </div>
                         </div>
                         <div class=" w3-row w3-padding">
