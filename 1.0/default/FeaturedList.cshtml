@@ -17,7 +17,7 @@
     var categoryList = (CategoryLimpetList)Model.GetDataObject("categorylist");
     var appTheme = (AppThemeLimpet)Model.GetDataObject("apptheme");
     var appThemeDefault = (AppThemeLimpet)Model.GetDataObject("appthemedefault");
-    var categoryData = new CategoryLimpet(portalCatalog.PortalId, articleDataList.CategoryId, sessionParams.CultureCode);
+    var categoryData = new CategoryLimpet(portalCatalog.PortalId, articleDataList.CategoryId, sessionParams.CultureCode, portalCatalog.SystemKey);
     var catalogSettings = (CatalogSettingsLimpet)Model.GetDataObject("catalogsettings");
 
     var hbsDict = new Dictionary<string, SimplisityInfo>();
